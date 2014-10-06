@@ -16,7 +16,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Idma\\ParsleyLaravel": "src/"
+            "Idma\\LaravelParsley": "src/"
         }
     },
     "config": {
