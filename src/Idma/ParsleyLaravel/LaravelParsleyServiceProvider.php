@@ -4,7 +4,7 @@ namespace Idma\LaravelParsley;
 
 use Illuminate\Html\HtmlServiceProvider;
 
-class ParsleyLaravelServiceProvider extends HtmlServiceProvider
+class LaravelParsleyServiceProvider extends HtmlServiceProvider
 {
 	/**
 	 * {@inheritdoc}
