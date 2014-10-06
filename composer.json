@@ -1,5 +1,5 @@
 {
-    "name": "idma/parsley-laravel",
+    "name": "idma/laravel-parsley",
     "description": "Converts Eloquent rules to Parsley rules",
     "keywords": ["laravel", "parsley", "html", "form"],
     "authors": [
