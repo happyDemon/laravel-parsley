@@ -9,21 +9,19 @@ class FormBuilder extends BaseFormBuilder {
      * @type \Illuminate\Database\Eloquent\Model
      */
     protected $model;
-    protected $modelName        = null;
+    protected $modelName = null;
 
     /**
-     * @type Parsley
+     * @type ParsleyConverter
      */
-    protected $parsley          = null;
-    protected $validationRules  = [];
-    protected $customAttributes = [];
-
-    public static $abc = 1;
+    protected $parsley   = null;
 
     /**
      * {@inheritdoc}
      */
     public function open(array $options = []) {
+        $this->parsley = new ParsleyConverter();
+
         if ($this->model && !isset($options['method'])) {
             $options['method'] = $this->model->getAttribute('id') ? 'put' : 'post';
         }
@@ -101,26 +99,9 @@ class FormBuilder extends BaseFormBuilder {
 
     public function input($type, $name, $value = null, $options = [])
     {
-        $options = array_merge($options, $this->createParsleyRulesForField($name));
+        $options = array_merge($options, $this->parsley->getFieldRules($name));
+
         return parent::input($type, $name, $value, $options);
-    }
-
-    /**
-     * @param $name
-     *
-     * @return array
-     */
-    protected function createParsleyRulesForField($name) {
-        if (isset($this->validationRules[$name]) && !starts_with($name, '_')) {
-            $rules = explode('|', $this->validationRules[$name]);
-            $parsleyRules = [];
-
-            $parsleyRules = array_merge($parsleyRules, $this->parsley->convertRules($name, $rules, $this->customAttributes));
-
-            return $parsleyRules;
-        }
-
-        return [];
     }
 
     /**
@@ -145,17 +126,6 @@ class FormBuilder extends BaseFormBuilder {
     public function setModel($model) {
         $this->model = $model;
         $this->modelName = strtolower((new \ReflectionClass($this->model))->getShortName());
-
-        if (method_exists($this->model, 'getParsleyRules')) {
-            $this->validationRules = $this->model->getParsleyRules();
-
-            if (property_exists($this->model, 'getParsleyCustomAttributes')) {
-                $_model = $this->model;
-                $this->customAttributes = $_model::$customAttributes;
-            }
-
-            $this->parsley = new Parsley($this->customAttributes);
-        }
     }
 
     /**

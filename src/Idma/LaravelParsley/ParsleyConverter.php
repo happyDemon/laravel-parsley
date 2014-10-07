@@ -4,17 +4,41 @@ namespace Idma\LaravelParsley;
 
 use Illuminate\Translation\Translator;
 
-class Parsley {
+class ParsleyConverter {
+    protected $rules            = [];
+    protected $customAttributes = [];
+
     /**
      * @type Translator
      */
     protected $translator       = null;
-    protected $customAttributes = [];
 
-    public function __construct(array $customAttributes = [])
+    public function __construct()
     {
-        $this->customAttributes = $customAttributes;
-        $this->translator = app()['translator'];
+        $formRequest = \View::shared('_ilp_request');
+
+        if ($formRequest && method_exists($formRequest, 'rules')) {
+            $this->rules = $formRequest->rules();
+
+            if (method_exists($formRequest, 'customAttributes')) {
+                $this->customAttributes = $formRequest->customAttributes();
+            }
+
+            $this->translator = app()['translator'];
+        }
+    }
+
+    public function getFieldRules($field)
+    {
+        $rules = [];
+
+        if (isset($this->rules[$field])) {
+            $rawRules = explode('|', $this->rules[$field]);
+
+            $rules = array_merge($rules, $this->convertRules($field, $rawRules));
+        }
+
+        return $rules;
     }
 
     public function convertRules($attribute, $rules)
