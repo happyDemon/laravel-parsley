@@ -1,4 +1,4 @@
 laravel-parsley
 ===============
 
-Converts FormRequest rules to Parsley rules
+Converts FormRequest rules to [Parsley](http://parsleyjs.org/) rules.
