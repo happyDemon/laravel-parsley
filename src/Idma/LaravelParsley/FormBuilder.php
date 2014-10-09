@@ -87,6 +87,14 @@ class FormBuilder extends BaseFormBuilder {
         return '<label for="'.$for.'"'.$options.'>'.$value.'</label>';
     }
 
+    /**
+     * Create a Bootstrap-like help block.
+     *
+     * @param  string $value
+     * @param  array  $options
+     *
+     * @return string
+     */
     public function helpBlock($value, array $options = []) {
         if (isset($options['class'])) {
             $options['class'] = 'help-block '.$options['class'];
@@ -97,6 +105,9 @@ class FormBuilder extends BaseFormBuilder {
         return '<span'.$this->html->attributes($options).'>'.$value.'</span>';
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function input($type, $name, $value = null, $options = [])
     {
         $options = array_merge($options, $this->parsley->getFieldRules($name));
