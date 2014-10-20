@@ -9,15 +9,19 @@ use Illuminate\Foundation\Http\FormRequest;
  *
  * @package Idma\LaravelParsley
  */
-trait FormRequestForwarderTrait
+trait UseParsleyValidationTrait
 {
     public function validate()
     {
         /** @type FormRequest $this */
         \View::share('_ilp_request', $this);
 
-        if ($this->isMethod('POST')) {
-            parent::validate();
+        if ([] != $this->all()) {
+            call_user_func('parent::validate');
+        } else {
+            if (!call_user_func([$this, 'passesAuthorization'])) {
+                call_user_func([$this, 'failedAuthorization']);
+            }
         }
     }
 }

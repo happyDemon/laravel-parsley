@@ -53,8 +53,8 @@ class ParsleyConverter {
 
             $parsleyRule = $rule;
 
-            $isNumeric = $this->isNumericRule($rule);
-            $message = $this->getMessage($attribute, $rule);
+            $isNumeric = $this->hasNumericRule($rules);
+            $message = $this->getMessage($attribute, $rule, $rules);
 
             switch ($rule) {
                 case 'required':
@@ -81,6 +81,10 @@ class ParsleyConverter {
                     $parsleyRule = 'length';
                     $params      = str_replace([':min', ':max'], $params, '[:min,:max]');
                     $message     = str_replace([':min', ':max'], $params, $message);
+                    break;
+
+                case 'integer':
+                    $parsleyRule = 'integer';
                     break;
 
                 case 'alpha_num':
@@ -126,17 +130,17 @@ class ParsleyConverter {
         return $attrs;
     }
 
-    protected function getMessage($attribute, $rule)
+    protected function getMessage($attribute, $currentRule, $rules)
     {
-        $lowerRule = snake_case($rule);
+        $lowerRule = snake_case($currentRule);
         $customKey = "validation.custom.{$attribute}.{$lowerRule}";
 
         $customMessage = $this->translator->trans($customKey);
 
         if ($customMessage !== $customKey) {
             return $customMessage;
-        } else if (in_array($rule, ['size', 'between', 'min', 'max'])) {
-            if ($this->isNumericRule($rule)) {
+        } else if (in_array($currentRule, ['size', 'between', 'min', 'max'])) {
+            if ($this->hasNumericRule($rules)) {
                 $key = "validation.{$lowerRule}.numeric";
             } else {
                 $key = "validation.{$lowerRule}.string";
@@ -173,6 +177,18 @@ class ParsleyConverter {
         } else {
             return str_replace('_', ' ', snake_case($attribute));
         }
+    }
+
+    protected function hasNumericRule($rules) {
+        foreach ($rules as $rule) {
+            list($rule, $params) = explode(':', $rule . ':');
+
+            if ($this->isNumericRule($rule)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function isNumericRule($rule) {
