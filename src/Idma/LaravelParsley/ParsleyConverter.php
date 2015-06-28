@@ -5,6 +5,8 @@ namespace Idma\LaravelParsley;
 use Illuminate\Translation\Translator;
 
 class ParsleyConverter {
+    use \Illuminate\Console\AppNamespaceDetectorTrait;
+
     protected $rules            = [];
     protected $customAttributes = [];
 
@@ -13,9 +15,13 @@ class ParsleyConverter {
      */
     protected $translator       = null;
 
-    public function __construct()
+    public function __construct($formRequest=null)
     {
-        $formRequest = \View::shared('_ilp_request');
+        if($formRequest != null && !is_object($formRequest))
+        {
+            $class = $this->getAppNamespace() . 'Http\Requests\\'.$formRequest;
+            $formRequest = new $class;
+        }
 
         if ($formRequest && method_exists($formRequest, 'rules')) {
             $this->rules = $formRequest->rules();
