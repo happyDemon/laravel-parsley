@@ -28,27 +28,19 @@ Lastly you should include parsley's scripts on the page and activate parsley for
 
 easy enough don't you think?
 
-### Validation rules that are implemented
+### Validation rules
 
- - [x] required
- - [x] remail
- - [x] min
- - [x] max
- - [x] between
- - [x] integer
- - [x] url
- - [x] alpha_num
- - [x] alpha_dash
- - [x] alpha
- - [x] regex
- - [x] confirmed
- 
- - [ ] accepted
- - [ ] after:(date)
- - [ ] before:(date)
- - [ ] boolean
- - [ ] date_format
- - [ ] different
- - [ ] in
- - [ ] not_in
- - [ ] ip_address
+Implemented    | Not implemented 
+---------------|-----------------
+ [x] required  |  [ ] accepted
+ [x] email     |  [ ] after:(date)
+ [x] min       |  [ ] before:(date)
+ [x] max       |  [ ] before:(date)
+ [x] between   |  [ ] date_format
+ [x] integer   |  [ ] different
+ [x] url       |  [ ] in
+ [x] alpha_num |  [ ] not_in
+ [x] alpha_dash|  [ ] ip_address
+ [x] alpha     |
+ [x] regex     |
+ [x] confirmed |
