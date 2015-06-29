@@ -1,12 +1,12 @@
 laravel-parsley
 ===============
 
-Converts FormRequest rules to [Parsley](http://parsleyjs.org/) rules.
+Converts [FormRequest](http://laravel.com/docs/5.0/validation#form-request-validation) rules to [Parsley](http://parsleyjs.org/) rules.
 
 
 ## Install
 
-If you have previously set up LaravelCollective/Html you can remove its service provider from `app/config`
+If you have previously set up `LaravelCollective/Html` or `Illuminate/Html` you can remove its service provider from `app/config`
 
 in `app/config` add the following under service providers: 
 
@@ -30,17 +30,17 @@ easy enough don't you think?
 
 ### Validation rules
 
-Implemented    | Not implemented 
----------------|-----------------
- [x] required  |  [ ] accepted
- [x] email     |  [ ] after:(date)
- [x] min       |  [ ] before:(date)
- [x] max       |  [ ] before:(date)
- [x] between   |  [ ] date_format
- [x] integer   |  [ ] different
- [x] url       |  [ ] in
- [x] alpha_num |  [ ] not_in
- [x] alpha_dash|  [ ] ip_address
- [x] alpha     |
- [x] regex     |
- [x] confirmed |
+Implemented| Not implemented 
+-----------|-----------------
+ required  |  accepted
+ email     |  after:(date)
+ min       |  before:(date)
+ max       |  before:(date)
+ between   |  date_format
+ integer   |  different
+ url       |  in
+ alpha_num |  not_in
+ alpha_dash|  ip_address
+ alpha     |
+ regex     |
+ confirmed |
