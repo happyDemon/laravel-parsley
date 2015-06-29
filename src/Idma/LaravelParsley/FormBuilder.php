@@ -102,31 +102,6 @@ class FormBuilder extends BaseFormBuilder
     }
 
     /**
-     * {@inheritdoc}
-     */
-//    public function getIdAttribute($name, $attributes) {
-//        $id = null;
-//
-//        if (array_key_exists('id', $attributes)) {
-//            $id = $attributes['id'];
-//        } else {
-//            $id = $name;
-//        }
-//
-//        if ($this->modelName && $id && !starts_with($id, '_')) {
-//            return $this->modelName.'-'.$id;
-//        }
-//
-//        return null;
-//    }
-
-    public function setModel($model)
-    {
-        $this->model = $model;
-        $this->modelName = strtolower((new \ReflectionClass($this->model))->getShortName());
-    }
-
-    /**
      * Gets the short model name.
      *
      * @return string

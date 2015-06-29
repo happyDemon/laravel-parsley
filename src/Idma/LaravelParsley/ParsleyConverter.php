@@ -37,7 +37,6 @@ class ParsleyConverter {
     public function getFieldRules($field)
     {
         $rules = [];
-
         if (isset($this->rules[$field])) {
             $rawRules = explode('|', $this->rules[$field]);
 
@@ -91,6 +90,11 @@ class ParsleyConverter {
 
                 case 'integer':
                     $parsleyRule = 'integer';
+                    break;
+
+                case 'url':
+                    $parsleyRule = 'type';
+                    $params = 'url';
                     break;
 
                 case 'alpha_num':

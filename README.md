@@ -27,3 +27,28 @@ All that's needed is for you to supply the name of the `FormRequest` in the `req
 Lastly you should include parsley's scripts on the page and activate parsley for your form.
 
 easy enough don't you think?
+
+### Validation rules that are implemented
+
+ - [x] required
+ - [x] remail
+ - [x] min
+ - [x] max
+ - [x] between
+ - [x] integer
+ - [x] url
+ - [x] alpha_num
+ - [x] alpha_dash
+ - [x] alpha
+ - [x] regex
+ - [x] confirmed
+ 
+ - [ ] accepted
+ - [ ] after:(date)
+ - [ ] before:(date)
+ - [ ] boolean
+ - [ ] date_format
+ - [ ] different
+ - [ ] in
+ - [ ] not_in
+ - [ ] ip_address
