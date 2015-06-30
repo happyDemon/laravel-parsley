@@ -30,17 +30,17 @@ easy enough don't you think?
 
 ### Validation rules
 
-Implemented| Not implemented 
------------|-----------------
- required  |  accepted
- email     |  after:(date)
- min       |  before:(date)
- max       |  before:(date)
- between   |  date_format
- integer   |  different
- url       |  in
- alpha_num |  not_in
- alpha_dash|  ip_address
- alpha     |
- regex     |
- confirmed |
+Implemented| Not implemented |
+-----------|-----------------|
+ required  |  accepted       |
+ email     |  after:(date)   |
+ min       |  before:(date)  |
+ max       |  before:(date)  |
+ between   |  date_format    |
+ integer   |  different      |
+ url       |  in             |
+ alpha_num |  not_in         |
+ alpha_dash|  ip_address     |
+ alpha     |                 |
+ regex     |                 |
+ confirmed |                 |
