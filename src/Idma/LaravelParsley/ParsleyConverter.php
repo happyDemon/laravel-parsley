@@ -63,7 +63,11 @@ class ParsleyConverter {
 
             switch ($rule) {
                 case 'required':
+                    break;
+
                 case 'email':
+                    $parsleyRule = 'type';
+                    $params = 'email';
                     break;
 
                 case 'min':
@@ -123,6 +127,7 @@ class ParsleyConverter {
 
                 default:
                     $message = null;
+                    break;
             }
 
             if ($message) {
