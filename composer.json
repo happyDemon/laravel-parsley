@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "happyDemon\\LaravelParsley": "src/"
+            "HappyDemon\\LaravelParsley": "src/"
         }
     },
     "config": {
