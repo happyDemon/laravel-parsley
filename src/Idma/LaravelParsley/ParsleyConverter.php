@@ -1,6 +1,6 @@
 <?php
 
-namespace Idma\LaravelParsley;
+namespace HappyDemon\LaravelParsley;
 
 use Illuminate\Translation\Translator;
 

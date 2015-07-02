@@ -10,7 +10,7 @@ If you have previously set up `LaravelCollective/Html` or `Illuminate/Html` you 
 
 in `app/config` add the following under service providers: 
 
-`Idma\LaravelParsley\LaravelParsleyServiceProvider`
+`HappyDemon\LaravelParsley\LaravelParsleyServiceProvider`
 
 If you haven't already, add these facades:
 
