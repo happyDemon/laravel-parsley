@@ -8,8 +8,8 @@
             "email": "info@idma.ru"
         },
         {
-          "name": "Maxim 'happyDemon' Kerstens",
-          "email": "maxim.kerstens@gmail.com"
+            "name": "Maxim 'happyDemon' Kerstens",
+            "email": "maxim.kerstens@gmail.com"
         }
     ],
     "require": {
@@ -20,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "HappyDemon\\LaravelParsley": "src/"
+            "happyDemon\\LaravelParsley": "src/"
         }
     },
     "config": {
