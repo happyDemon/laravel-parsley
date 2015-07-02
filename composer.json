@@ -1,11 +1,15 @@
 {
-    "name": "idma/laravel-parsley",
+    "name": "happydemon/laravel-parsley",
     "description": "Converts FormRequest rules to Parsley rules",
     "keywords": ["laravel", "laravel 5", "parsley", "parsleyjs", "html", "form", "collective"],
     "authors": [
         {
             "name": "idma",
             "email": "info@idma.ru"
+        },
+        {
+            "name": "Maxim 'happyDemon' Kerstens",
+            "email": "maxim.kerstens@gmail.com"
         }
     ],
     "require": {
@@ -16,7 +20,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Idma\\LaravelParsley": "src/"
+            "happyDemon\\LaravelParsley": "src/"
         }
     },
     "config": {
